@@ -1,0 +1,25 @@
+AgentServer = {
+    debugPort = 8010,
+    nodePort  = 8110,
+    webPort   = 8210,
+    maxIndex  = 1,
+}
+
+AdminServer = {
+    debugPort = 8510,
+    nodePort  = 8610,
+    maxIndex  = 1,
+}
+
+LobbyServer = {
+    debugPort = 9010,
+    nodePort  = 9110,
+    maxIndex  = 1,
+}
+
+MySite = {
+    -- private addrs, public addrs
+    ttd = {"0.0.0.0", "0.0.0.0"},
+    -- ttd2 = {"0.0.0.0", "0.0.0.0"},
+    -- ttd3 = {"0.0.0.0", "0.0.0.0"},
+}

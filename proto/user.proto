@@ -1,0 +1,59 @@
+syntax = "proto2";
+
+package user;
+
+// 认证连接
+message AuthGateReq {
+    required string uid             = 1;    // 用户唯一标识UID
+    required uint32 ts              = 2;    // 校验时间戳
+    required string token           = 3;    // 校验码
+}
+
+message AuthGateRep {
+    required uint32 result          = 1;    // 0: 成功
+    optional uint32 server_time     = 2;    // 服务器时间戳
+}
+
+// 心跳包
+message HeartbeatReq {
+}
+
+message HeartbeatRep {
+}
+
+// 登出
+message LogoutRep {
+    required uint32 type            = 1;    // 0: 正常退出, 1: 顶号退出, 2: 系统踢出
+}
+
+// 发送消息
+message NotifyMessage {
+    required uint32 channel         = 1;    // 1: 弹出提示; 2: 系统广播
+    required string message         = 2;    // 文本信息
+    repeated string parameter       = 3;    // 参数列表
+}
+
+// 用户基本信息
+message UserInfoReq {
+    required string uid = 1;
+}
+
+// 货币基本信息
+message Money {
+    optional string score           = 1;
+    optional string eth             = 2;
+    optional string eos             = 3;
+}
+
+message UserInfoRep {
+    required string uid             = 1;    // 玩家Id
+    required string nickname        = 2;    // 玩家名字
+    required string portrait        = 3;    // 玩家头像
+    required Money  wallet          = 4;    // 钱包
+}
+
+// 更新指定用户信息
+message UserInfoUpdate {
+    required string uid             = 1;    // 用户唯一标识UID
+    required string doc             = 2;    // 用户基本信息组成的json字符串，json更新字段只增不减
+}
